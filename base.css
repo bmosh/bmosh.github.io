@@ -8,6 +8,7 @@ body {
     --secondary-background-color: rgb(3, 3, 3);
 
     --border-color: #333;
+
 }
 
 hr {
@@ -115,6 +116,10 @@ hr {
     border-color: var(--border-color);
     border-width: 1px;
     border-style: solid;
+}
+
+.main-content:hover {
+    background-color: var(--primary-background-color);
 }
 
 .footer {
