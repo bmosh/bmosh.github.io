@@ -21,6 +21,31 @@ body {
     --border-width: 1px;
 }
 
+.dark {
+    --primary-text-color: #f0f0f0;
+    --secondary-text-color: #b1b1b1;
+
+    --primary-element-color: #333;
+
+    --primary-background-color: #000;
+    --secondary-background-color: rgb(6, 6, 6);
+    --tertiary-background-color: rgb(12, 12, 12);
+}
+
+.light {
+    --primary-text-color: #0f0f0f;
+
+    --secondary-text-color: #333;
+
+    --primary-element-color: #b1b1b1;
+
+    --primary-background-color: #f0f0f0;
+    --secondary-background-color: rgb(249, 249, 249);
+    --tertiary-background-color: rgb(240, 240, 240);
+
+    --border-color: #333;
+}
+
 hr {
     color: var(--primary-element-color);
 }
