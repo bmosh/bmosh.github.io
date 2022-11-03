@@ -13,14 +13,28 @@ function changeName() {
 
 const myHeading = document.querySelector("h1");
 
+myHeading.onclick = function() { changeName() };
+
 if (localStorage.name) {
   myHeading.textContent = "Hello " + localStorage.getItem('name') + "!";
-} else {
-  myHeading.onclick = function(){ changeName() };
+} 
+
+let topHeading = true;
+
+function change_title_text(th) {
+
+  if (topHeading) {
+    topHeading = false;
+    th.innerHTML = "Rob Mosher";
+  } else {
+    topHeading = true;
+    th.innerHTML = "RM";
+  }
 }
 
+const toph = document.getElementById("title");
 
-const topHeading = document.getElementsByClassName("navbar-title");
-
-function change_title_text() {
+toph.onclick = function() {
+  change_title_text(toph);
 }
+

@@ -68,6 +68,8 @@ hr {
     position: relative;
     color: var(--secondary-text-color);
     width: 80%;
+    height: 60%;
+    top: 20%;
     left: 10%;
 }
 
@@ -129,6 +131,10 @@ hr {
     border-color: var(--border-color);
     border-width: var(--border-width);
     border-style: solid;
+}
+
+.main-content:hover {
+    background-color: var(--tertiary-background-color);
 }
 
 .main-link {
@@ -203,8 +209,10 @@ hr {
     background-color: var(--primary-element-color);
 }
 
-.main-content:hover {
-    background-color: var(--tertiary-background-color);
+.placeholder-line {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-direction:unset;
 }
 
 .footer {
@@ -217,3 +225,11 @@ hr {
     color: var(--secondary-text-color);
 
 }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
