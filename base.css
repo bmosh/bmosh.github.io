@@ -19,6 +19,8 @@ body {
     --border-radius-square: 1px;
     --border-radius-round: 4px;
     --border-width: 1px;
+
+    min-height: fit-content;
 }
 
 .dark {
@@ -50,18 +52,23 @@ hr {
     color: var(--primary-element-color);
 }
 
-.page-header {
-    margin: 10px;
-    color: var(--primary-text-color);
-    text-align: center;
-}
-
 .body-text {
     color: var(--secondary-text-color);
     text-align: center;
     width: 80%;
     position: relative;
     left: 10%;
+}
+
+.footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    margin: 0%;
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+
 }
 
 .item-list {
@@ -71,6 +78,7 @@ hr {
     height: 60%;
     top: 20%;
     left: 10%;
+    padding: auto;
 }
 
 .list-head {
@@ -116,7 +124,6 @@ hr {
     position: absolute;
 
     width: 60%;
-    height: 70%;
 
     top: 15%;
     left: 20%;
@@ -209,27 +216,45 @@ hr {
     background-color: var(--primary-element-color);
 }
 
+.page-header {
+    margin: 10px;
+    color: var(--primary-text-color);
+    text-align: center;
+}
+
 .placeholder-line {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-direction:unset;
+    animation-direction: unset;
 }
 
-.footer {
-    position: absolute;
+.sub-text {
     text-align: center;
-    bottom: 0;
-    width: 100%;
-    margin: 0%;
-    background-color: var(--secondary-background-color);
-    color: var(--secondary-text-color);
-
+    font-size: 8pt;
 }
+
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    20% { opacity: 0; }
-    40% { opacity: 0.3; }
-    60% { opacity: 0.5; }
-    80% { opacity: 0.9; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.3;
+    }
+
+    60% {
+        opacity: 0.5;
+    }
+
+    80% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
