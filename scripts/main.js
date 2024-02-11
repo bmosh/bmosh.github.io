@@ -71,8 +71,8 @@ function removeInput(){
 
 async function getInputValue(){
   
-  const value = document.querySelector("input").value;
-  lastline = value;
+  const value_one = document.querySelector("input").value;
+  let value = value_one.toLowerCase();
   if(value === "--help"){
     trueValue(value);
     
