@@ -1,4 +1,3 @@
-
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
 var lastline = "";
@@ -30,6 +29,7 @@ async function open_terminal(){
   createText("To learn more about me, you can run several commands, e.g.");
  
   createCode("whoami", "Who I am, and what do I do.");
+  createCode("projects", "An overview of my work.")
   createCode("social", "My social network pages.");
   createCode("--help", "See all commands.");
 
@@ -76,8 +76,8 @@ async function getInputValue(){
   if(value === "--help"){
     trueValue(value);
     
-    createCode("projects", "An overview of my activities.");
     createCode("whoami", "Who I am, and what do I do.");
+    createCode("projects", "An overview of my activities.");
     createCode("social", "My social network pages.");
     createCode("social -a", "All my social network pages at once.");
     createCode("clear", "Clear the terminal.");
@@ -93,13 +93,13 @@ async function getInputValue(){
   }
   else if(value === "spacex"){
     trueValue(value);
-    createText("<a href='https://www.spacex.com/' target='_blank'><i class='fa fa-rocket white'></i> SpaceX</a>")
+    createText("<a href='https://www.spacex.com/' target='_blank'><i class='fa fa-rocket white'></i> SpaceX:</a>")
     createText("<p>I’m excited to be joining the Application Software team at SpaceX as a Software Engineering Intern this summer!</p>")
     createText("As part of this internship, I'll have an opportunity to create mission critical applications that are used throughout SpaceX to accelerate launch vehicle production and flight!")
   }
   else if(value === "mitll"){
     trueValue(value);
-    createText("<a href='https://ll.mit.edu/' target='_blank'><i class='fa fa-laptop-code white'></i> MIT Lincoln Laboratory</a>")
+    createText("<a href='https://ll.mit.edu/' target='_blank'><i class='fa fa-laptop-code white'></i> MIT Lincoln Laboratory:</a>")
     createText("<p>As an AI/ML Engineering Intern at the MIT Lincoln Laboratory in the Summer of 2023, \
     I led algorithm implementation and evaluation on a project that looked to ensure decision outcome fairness for legally protected groups in large-scale national security decision processes.")
     createText("This opportunity arose when the previous lead left to pursue a congressional fellowship, and I recognized my skills in PyTorch, \
@@ -108,7 +108,7 @@ async function getInputValue(){
   }
   else if(value === "oracl"){
     trueValue(value);
-    createText("<a href='https://www.orie.cornell.edu/orie/research/oracl' target='_blank'><i class='fa fa-circle-nodes'></i> ORACL</a>")
+    createText("<a href='https://www.orie.cornell.edu/orie/research/oracl' target='_blank'><i class='fa fa-database white'></i> ORACL:</a>")
     createText("I was recruited to join the OR Advances through Collaboration research program at Cornell by my Engineering Statistics II professor in September 2022.")
     createText("My first assignment was to the GM Team, as a co-lead for a team of 14 leading correspondence with the GM Advanced Analytics Center. \
     Our team would work with them to model the potential impact of a shift from the dealership sales model, to more closely approximate the simplified direct sale model that companies like Tesla have been implementing in recent years.")
@@ -116,7 +116,7 @@ async function getInputValue(){
   }
   else if(value === "hablab"){
     trueValue(value);
-    createText("<a href='https://richardson.cee.cornell.edu/service-learning-project-advising/' target='_blank'><i class='fa fa-leaf white'></i> Richardson HABLAB</a>")
+    createText("<a href='https://richardson.cee.cornell.edu/service-learning-project-advising/' target='_blank'><i class='fa fa-leaf white'></i> Richardson HABLAB:</a>")
     createText("I joined the Richardson Lab of Civil and Environmental Engineering in February 2022, and was originally tasked with developing ImageJ scripts to automate the time-intensive process of algae classification and toxin level prediction.")
     createText("While working on this assignment, I realized that there was potential to automate the entire process, from the moment our volunteers submit data to when the predictions are returned to them. \
     I earned a research grant from the university to continue my work over summer 2022, and during that time I implemented this full automation using Python, PowerShell, and the Google Drive and Mail APIs.")
