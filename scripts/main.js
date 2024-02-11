@@ -166,7 +166,11 @@ async function getInputValue(){
     createText("I love my beautiful girlfriend <3")
   }
   
-  
+  else if (value === "credits"){
+    trueValue(value);
+    createText("This terminal-style website was adapted from <a href='https://github.com/heberleonard2/terminal-style-portfolio-page'>Heber Leonard's</a> terminal-style portfolio page.");
+  }
+
   else if(value === "clear"){
     document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
