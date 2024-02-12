@@ -1,15 +1,14 @@
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
-var lastline = "";
     
     
 app.addEventListener("keypress", async function(event){
   if(event.key === "Enter"){
-    await delay(150);
+    await delay(100);
    getInputValue();
    
     removeInput();
-    await delay(150);
+    await delay(100);
     new_line();
   }
 });
@@ -21,37 +20,38 @@ app.addEventListener("click", function(event){
 
 
 async function open_terminal(){
-  createText("Welcome to my website!");
+  createText("Starting the server...");
 
   await delay(500);
-  createText("Starting the server...");
+  createIntro();
+
   await delay(1000);
-  createText("To learn more about me, you can run several commands, e.g.");
  
-  createCode("whoami", "Who I am, and what do I do.");
+  createCode("whoami", "Who I am, and what I do.");
   createCode("projects", "An overview of my work.")
   createCode("social", "My social network pages.");
   createCode("--help", "See all commands.");
 
   await delay(500);
-  new_line();
-}
 
-
-function new_line(){
-  
   const p = document.createElement("p");
   const span1 = document.createElement("span");
   const span2 = document.createElement("span");
   p.setAttribute("class", "path")
   p.textContent = "# visitor";
-  span1.textContent = " in";
+  span1.textContent = " @";
   span2.textContent = " ~/rob-mosher/";
 
   
   p.appendChild(span1);
   p.appendChild(span2);
   app.appendChild(p);
+
+  new_line();
+}
+
+
+function new_line(){
   const div = document.createElement("div");
   div.setAttribute("class", "type")
   const i = document.createElement("i");
@@ -76,10 +76,11 @@ async function getInputValue(){
   if(value === "--help"){
     trueValue(value);
     
-    createCode("whoami", "Who I am, and what do I do.");
+    createCode("whoami", "Who I am, and what I do.");
     createCode("projects", "An overview of my activities.");
-    createCode("social", "My social network pages.");
-    createCode("social -a", "All my social network pages at once.");
+    createCode("contact", "Ways to get in touch with me.");
+    createCode("contact -a", "All my social network pages at once.");
+    createCode("credits", "Credits for this website.");
     createCode("clear", "Clear the terminal.");
     
   }
@@ -129,14 +130,14 @@ async function getInputValue(){
     I'm highly motivated and challenge-seeking, with demonstrated technical, leadership, and communication skills to go along with a strong academic record.")
     createText("I'm pursuing a career focused on software engineering, data science, scientific computing, or quantitative modeling in the AI/ML field. I hope you enjoy my website!")
   }
-  else if(value === "social -a"){
+  else if(value === "contact -a"){
     trueValue(value);
     createText("<a href='mailto:ram487@cornell.edu' target='_blank'><i class='fa fa-envelope white'></i> ram487@cornell.edu</a>");
     createText("<a href='https://github.com/bmosh' target='_blank'><i class='fab fa-github white'></i> github.com/bmosh</a>")
     createText("<a href='https://www.linkedin.com/in/r-mosher/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/r-mosher</a>")
     createText("<a href='https://www.instagram.com/bobby.mosherß/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/bobby.mosher</a>")
   }
-  else if (value === "social"){
+  else if (value === "contact"){
     trueValue(value);
     createText("Run any of the following commands to check out my social media accounts:");
     createCode("email", "my email address");
@@ -165,15 +166,33 @@ async function getInputValue(){
     trueValue(value);
     createText("I love my beautiful girlfriend <3")
   }
+  else if (value === "su") {
+    trueValue(value);
+    createText("Nice try ;)")
+
+  }
   
   else if (value === "credits"){
     trueValue(value);
-    createText("This terminal-style website was adapted from <a href='https://github.com/heberleonard2/terminal-style-portfolio-page'>Heber Leonard's</a> terminal-style portfolio page.");
+    createText("This terminal-style website was adapted from <a href='https://github.com/heberleonard2/terminal-style-portfolio-page'>Heber Leonard's</a> terminal-style portfolio page under MIT license.");
   }
 
   else if(value === "clear"){
     document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
+    const p = document.createElement("p");
+    const span1 = document.createElement("span");
+    const span2 = document.createElement("span");
+    p.setAttribute("class", "path")
+    p.textContent = "# visitor";
+    span1.textContent = " @";
+    span2.textContent = " ~/rob-mosher/";
+
+    
+    p.appendChild(span1);
+    p.appendChild(span2);
+    app.appendChild(p);
+
   }
   else{
     falseValue(value);
@@ -212,9 +231,7 @@ function falseValue(value){
 function createText(text, classname){
   const p = document.createElement("p");
   
-  p.innerHTML =
-  text
-  ;
+  p.innerHTML = text;
   app.appendChild(p);
 }
 
@@ -223,6 +240,12 @@ function createCode(code, text){
   p.setAttribute("class", "code");
   p.innerHTML =
  `${code} <br/><span class='text'> ${text} </span>`;
+  app.appendChild(p);
+}
+function createIntro() {
+  const p = document.createElement("p");
+  p.setAttribute("class", "intro");
+  p.textContent = "Welcome to my website! \nTo learn more about me, you can run several commands, e.g.";
   app.appendChild(p);
 }
 

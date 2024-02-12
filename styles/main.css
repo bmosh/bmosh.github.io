@@ -125,6 +125,10 @@ p.code{
   color:#66C2CD;
   margin-left:8px;
 }
+p.intro{
+  color:cornflowerblue;
+  margin-left: 8px;
+}
 span.text{
   margin-left:16px;
   color:white;
