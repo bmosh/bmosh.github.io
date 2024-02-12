@@ -25,14 +25,14 @@ async function open_terminal(){
   await delay(500);
   createIntro();
 
-  await delay(1000);
+  await delay(1200);
  
   createCode("whoami", "Who I am, and what I do.");
   createCode("projects", "An overview of my work.")
-  createCode("contact", "Ways to contact me.");
+  createCode("contact", "Other places/sites I'm active on.");
   createCode("--help", "See all commands.");
 
-  await delay(500);
+  await delay(700);
 
   const p = document.createElement("p");
   const span1 = document.createElement("span");
@@ -135,11 +135,11 @@ async function getInputValue(){
     createText("<a href='mailto:ram487@cornell.edu' target='_blank'><i class='fa fa-envelope white'></i> ram487@cornell.edu</a>");
     createText("<a href='https://github.com/bmosh' target='_blank'><i class='fab fa-github white'></i> github.com/bmosh</a>")
     createText("<a href='https://www.linkedin.com/in/r-mosher/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/r-mosher</a>")
-    createText("<a href='https://www.instagram.com/bobby.mosherß/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/bobby.mosher</a>")
+    createText("<a href='https://www.instagram.com/bobby.mosher/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/bobby.mosher</a>")
   }
   else if (value === "contact"){
     trueValue(value);
-    createText("Run any of the following commands to get in touch:");
+    createText("Run any of the following commands to see:");
     createCode("email", "my email address");
     createCode("linkedin", "my LinkedIn profile");
     createCode("insta", "my Instagram profile");
@@ -155,7 +155,7 @@ async function getInputValue(){
   }
   else if(value === "insta"){
     trueValue(value);
-    createText("<a href='https://www.instagram.com/bobby.mosherß/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/bobby.mosher</a>");
+    createText("<a href='https://www.instagram.com/bobby.mosher/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/bobby.mosher</a>");
   }
   else if(value === "github"){
     trueValue(value);
