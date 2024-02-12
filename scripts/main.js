@@ -29,7 +29,7 @@ async function open_terminal(){
  
   createCode("whoami", "Who I am, and what I do.");
   createCode("projects", "An overview of my work.")
-  createCode("social", "My social network pages.");
+  createCode("contact", "Ways to contact me.");
   createCode("--help", "See all commands.");
 
   await delay(500);
@@ -79,7 +79,7 @@ async function getInputValue(){
     createCode("whoami", "Who I am, and what I do.");
     createCode("projects", "An overview of my activities.");
     createCode("contact", "Ways to get in touch with me.");
-    createCode("contact -a", "All my social network pages at once.");
+    createCode("contact -a", "All my contacts and social pages at once.");
     createCode("credits", "Credits for this website.");
     createCode("clear", "Clear the terminal.");
     
@@ -139,7 +139,7 @@ async function getInputValue(){
   }
   else if (value === "contact"){
     trueValue(value);
-    createText("Run any of the following commands to check out my social media accounts:");
+    createText("Run any of the following commands to get in touch:");
     createCode("email", "my email address");
     createCode("linkedin", "my LinkedIn profile");
     createCode("insta", "my Instagram profile");
