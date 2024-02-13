@@ -25,17 +25,17 @@ app.addEventListener("click", function(event){
 async function open_terminal(){
   createText("Starting the server...");
 
-  // await delay(500);
+  await delay(500);
   createIntro();
 
-  // await delay(1200);
+  await delay(1000);
  
   createCode("whoami", "Who I am, and what I do.");
   createCode("projects", "An overview of my work.")
   createCode("contact", "Other places/sites I'm active on.");
   createCode("--help", "See all commands.");
 
-  // await delay(700);
+  await delay(700);
 
   const p = document.createElement("p");
   const span1 = document.createElement("span");
