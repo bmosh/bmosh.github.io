@@ -3,6 +3,27 @@
   padding:0;
   box-sizing: border-box;
 }
+:root {
+  --darkmodebackground: #393A59;
+  --darkmodetextcolor: rgb(238, 238, 238);
+  --darkmodeoutline: #888;
+
+  --darkmodeconsolebackground: #282A35;
+  --darkmodeconsoletextcolor: rgb(238, 238, 238);
+  --darkmodeconsoleoutline: #888;
+
+  --lightmodebackground: #dcdcdc;
+  --lightmodetextcolor:rgb(44, 44, 44);
+  --lightmodeoutline: 1px solid #777;
+
+  --lightmodeconsolebackground: #dcdcdc;
+  --lightmodeconsoletextcolor:rgb(44, 44, 44);
+  --lightmodeconsoleoutline: 1px solid #777;
+
+  --currentbackground: var(--darkmodebackground);
+  --currenttextcolor: var(--darkmodetextcolor);
+  --currentoutline: var(--darkmodeoutline);
+}
 ::-webkit-scrollbar-track
 {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -30,10 +51,58 @@
 .blue{
   color:#9CEAF3;
 }
+
+@keyframes lighttodark {
+  0%{
+  background-color: var(--lightmodebackground);
+  color: var(--lightmodetextcolor);
+  outline: 1px solid var(--lightmodeoutline);
+  }
+  100% {
+  background-color: var(--darkmodebackground);
+  color: var(--darkmodetextcolor);
+  outline: 1px solid var(--darkmodeoutline);
+  }
+  
+}
+
+@keyframes darktolight {
+  0%{
+  background-color: var(--darkmodebackground);
+  color: var(--darkmodetextcolor);
+  outline: 1px solid var(--darkmodeoutline);
+  }
+  100% {
+  background-color: var(--lightmodebackground);
+  color: var(--lightmodetextcolor);
+  outline: 1px solid var(--lightmodeoutline);
+  }
+}
+.darkmode{
+  animation: lighttodark 1s forwards;
+  background-color: var(--darkmodebackground);
+  color: var(--darkmodetextcolor);
+  outline: 1px solid var(--darkmodeoutline);
+}
+.darkmode-console{
+  background-color: var(--darkmodebackground);
+  color: var(--darkmodetextcolor);
+  outline: 1px solid var(--darkmodeoutline);
+
+}
+
+.lightmode{
+  animation: darktolight 1s forwards;
+  background-color: #dcdcdc;
+  color:rgb(44, 44, 44);
+  outline: 1px solid #777;
+}
 a{
   text-decoration: none;
   color: rgb(238, 238, 238);
 }
+
+
 body{
   background-color:#393A59;
 
@@ -42,6 +111,8 @@ body{
   display:flex;
   align-items: center;
   justify-content: center;
+
+
 }
 .container{
   display:flex;
@@ -51,10 +122,11 @@ body{
   height:500px;
   overflow: hidden;
   border-radius: 6px;
-  border: 1px solid gray;
+  border: 1px solid #777;;
   margin:20px;
   cursor: text;
 }
+
 .menu{
   display:flex;
   align-items: center;
@@ -67,6 +139,7 @@ body{
   padding: 0 8px;
   cursor:default;
 }
+
 .menu .button{
   width:12px;
   height:12px;
@@ -74,9 +147,11 @@ body{
   margin-right:8px;
   cursor:pointer;
 }
+
 .red{background-color:#F5544D;}
 .yellow{background-color:#FABD2F;}
 .green{background-color:#47D043;}
+
 div.title{
   flex:1;
   text-align:center;
@@ -143,7 +218,7 @@ p.path span + span{
   color:#9CEAF3;
 }
 
-.sucess{
+.success{
   color:#5AD786;
 }
 .error{

@@ -1,5 +1,8 @@
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res => setTimeout(res, ms));
+var su = false;
+var check_password = false;
+var rt = "sharks";
     
     
 app.addEventListener("keypress", async function(event){
@@ -22,17 +25,17 @@ app.addEventListener("click", function(event){
 async function open_terminal(){
   createText("Starting the server...");
 
-  await delay(500);
+  // await delay(500);
   createIntro();
 
-  await delay(1200);
+  // await delay(1200);
  
   createCode("whoami", "Who I am, and what I do.");
   createCode("projects", "An overview of my work.")
   createCode("contact", "Other places/sites I'm active on.");
   createCode("--help", "See all commands.");
 
-  await delay(700);
+  // await delay(700);
 
   const p = document.createElement("p");
   const span1 = document.createElement("span");
@@ -49,7 +52,9 @@ async function open_terminal(){
 
   new_line();
 }
-
+function check_password(){
+  return 0;
+}
 
 function new_line(){
   const div = document.createElement("div");
@@ -70,10 +75,46 @@ function removeInput(){
 }
 
 async function getInputValue(){
-  
   const value_one = document.querySelector("input").value;
   let value = value_one.toLowerCase().trim();
-  if(value === "--help"){
+
+  if (su) {
+    if (value === "darkmode") {
+      trueValue(value);
+      document.body.classList.remove("lightmode");
+      document.body.classList.toggle("darkmode");
+    }
+    else if (value === "lightmode") {
+      trueValue(value);
+      document.body.classList.remove("darkmode");
+      document.body.classList.toggle("lightmode");
+    }
+    if (value === "exit") {
+      su = false;
+      createText("Exited superuser mode. Goodbye!");
+    }
+  }
+  else if(check_password) {
+    if (value === rt) {
+      su = true;
+      check_password = false;
+      createText("Welcome to the superuser mode! You can now run any command as the superuser.");
+    }
+    else {
+      createText("Sorry, try again later.");
+      check_password = false;
+    }
+  }
+  else if(value === "exit"){
+    createText("You are not currently in su mode.")
+  }
+  else if (value === "su") {
+    trueValue(value);
+    createText("please enter the password: ");
+    check_password = true;
+  }
+
+  else if(value === "--help"){
     trueValue(value);
     
     createCode("whoami", "Who I am, and what I do.");
@@ -123,6 +164,7 @@ async function getInputValue(){
     I earned a research grant from the university to continue my work over summer 2022, and during that time I implemented this full automation using Python, PowerShell, and the Google Drive and Mail APIs.")
     createText("Now, I am working to shift our system away from the Google Ecosystem with a redesigned standalone website, submission form and SQL Server to increase volunteer accessibility and trust in the program.")
   }
+  
   else if(value === "whoami"){
     trueValue(value);
     createText("Hello, my name is Rob :)")
@@ -130,6 +172,7 @@ async function getInputValue(){
     I'm highly motivated and challenge-seeking, with demonstrated technical, leadership, and communication skills to go along with a strong academic record.")
     createText("I'm pursuing a career focused on software engineering, data science, scientific computing, or quantitative modeling in the AI/ML field. I hope you enjoy my website!")
   }
+
   else if(value === "contact -a"){
     trueValue(value);
     createText("<a href='mailto:ram487@cornell.edu' target='_blank'><i class='fa fa-envelope white'></i> ram487@cornell.edu</a>");
@@ -162,14 +205,14 @@ async function getInputValue(){
     createText("<a href='https://github.com/bmosh' target='_blank'><i class='fab fa-github white'></i> github.com/bmosh</a>")
   }
 
+  else if(value.indexOf("nano") === 0) {
+    trueValue(value);
+    createText("I'm sorry, but I'm not a text editor. You can't use nano here.");
+  }
+
   else if(value === "saniya"){
     trueValue(value);
     createText("I love my beautiful girlfriend <3")
-  }
-  else if (value === "su") {
-    trueValue(value);
-    createText("Nice try ;)")
-
   }
   
   else if (value === "credits"){
@@ -178,21 +221,8 @@ async function getInputValue(){
   }
 
   else if(value === "clear"){
-    document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
-    document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
-    const p = document.createElement("p");
-    const span1 = document.createElement("span");
-    const span2 = document.createElement("span");
-    p.setAttribute("class", "path")
-    p.textContent = "# visitor";
-    span1.textContent = " @";
-    span2.textContent = " ~/rob-mosher/";
-
-    
-    p.appendChild(span1);
-    p.appendChild(span2);
-    app.appendChild(p);
-
+    clear();
+    newLocationLine();
   }
   else{
     falseValue(value);
@@ -207,7 +237,7 @@ function trueValue(value){
   const i = document.createElement("i");
   i.setAttribute("class", "fas fa-angle-right icone")
   const mensagem = document.createElement("h2");
-  mensagem.setAttribute("class", "sucess")
+  mensagem.setAttribute("class", "success")
   mensagem.textContent = `${value}`;
   div.appendChild(i);
   div.appendChild(mensagem);
@@ -227,7 +257,24 @@ function falseValue(value){
   div.appendChild(mensagem);
   app.appendChild(div);
 }
+function clear(){
+  document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
+  document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
+}
+function newLocationLine() {
+  const p = document.createElement("p");
+  const span1 = document.createElement("span");
+  const span2 = document.createElement("span");
 
+  p.setAttribute("class", "path")
+  p.textContent = "# visitor";
+  span1.textContent = " @";
+  span2.textContent = " ~/rob-mosher/";
+  
+  p.appendChild(span1);
+  p.appendChild(span2);
+  app.appendChild(p);
+}
 function createText(text, classname){
   const p = document.createElement("p");
   
