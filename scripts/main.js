@@ -12,7 +12,11 @@ app.addEventListener("keypress", async function(event){
    
     removeInput();
     await delay(100);
-    new_line();
+    if (su) {
+      new_su_line();
+    } else {
+      new_line();
+    }
   }
 });
 
@@ -52,9 +56,6 @@ async function open_terminal(){
 
   new_line();
 }
-function check_password(){
-  return 0;
-}
 
 function new_line(){
   const div = document.createElement("div");
@@ -68,6 +69,17 @@ function new_line(){
   input.focus();
   
 }
+function new_su_line() {
+  const div = document.createElement("div");
+  div.setAttribute("class", "type")
+  const i = document.createElement("i");
+  i.setAttribute("class", "fas fa-hashtag icone")
+  const input = document.createElement("input");
+  div.appendChild(i);
+  div.appendChild(input);
+  app.appendChild(div);
+  input.focus();
+}
 
 function removeInput(){
   const div = document.querySelector(".type");
@@ -78,22 +90,38 @@ async function getInputValue(){
   const value_one = document.querySelector("input").value;
   let value = value_one.toLowerCase().trim();
 
-  if (su) {
-    if (value === "darkmode") {
+
+  if (value === "darkmode") {
+    if (su) {
       trueValue(value);
       document.body.classList.remove("lightmode");
       document.body.classList.toggle("darkmode");
+    } else {
+      falseValue(value);
+      createText("Incorrect permissions to change mode.")
     }
-    else if (value === "lightmode") {
+  }
+  else if (value === "lightmode") {
+    if (su) {
       trueValue(value);
       document.body.classList.remove("darkmode");
       document.body.classList.toggle("lightmode");
+    } else {
+      falseValue(value);
+      createText("Incorrect permissions to change lightmode.")
     }
-    if (value === "exit") {
-      su = false;
-      createText("Exited superuser mode. Goodbye!");
-    }
+    
   }
+  else if (value === "exit") {
+    if (su) {
+    su = false;
+    trueValue(value);
+    createText("Exited superuser mode. Goodbye!");
+  } else{
+    falseValue(value);
+    createText("Not in su mode. Please enter a different command.")
+  }
+}
   else if(check_password) {
     if (value === rt) {
       su = true;
@@ -116,7 +144,8 @@ async function getInputValue(){
 
   else if(value === "--help"){
     trueValue(value);
-    
+    createText("Run any of the following commands to learn more about me.")
+    createText("Hint: there may be secret commands too!");
     createCode("whoami", "Who I am, and what I do.");
     createCode("projects", "An overview of my activities.");
     createCode("contact", "Ways to get in touch with me.");
@@ -206,7 +235,7 @@ async function getInputValue(){
   }
 
   else if(value.indexOf("nano") === 0) {
-    trueValue(value);
+    falseValue(value);
     createText("I'm sorry, but I'm not a text editor. You can't use nano here.");
   }
 

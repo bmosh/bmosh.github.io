@@ -261,3 +261,9 @@ input:focus{
 .icone.error{
   color:#F78F85;
 }
+.foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: bottom;
+}
