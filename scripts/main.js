@@ -29,7 +29,7 @@ app.addEventListener("click", function(event){
 async function open_terminal(){
   createText("Starting the server...");
 
-  await delay(500);
+  await delay(400);
   createIntro();
 
   await delay(1000);
@@ -137,9 +137,14 @@ async function getInputValue(){
     createText("You are not currently in su mode.")
   }
   else if (value === "su") {
-    trueValue(value);
-    createText("please enter the password: ");
-    check_password = true;
+    if (!su){
+      trueValue(value);
+      createText("please enter the password: ");
+      check_password = true;
+    } else {
+      falseValue(value);
+      createText("You are already in SU mode.")
+    }
   }
 
   else if(value === "--help"){
@@ -153,6 +158,13 @@ async function getInputValue(){
     createCode("credits", "Credits for this website.");
     createCode("clear", "Clear the terminal.");
     
+    if (su) {
+      createText("Being in SU mode grants you special permissions, such as changing from dark to light mode:")
+      createCode("lightmode", "Change to light mode.")
+      createCode("darkmode", "Change to dark mode.")
+      createText("There are more hidden commands for you to find!")
+    }
+    
   }
   else if(value === "projects"){
     trueValue(value);
@@ -165,8 +177,10 @@ async function getInputValue(){
   else if(value === "spacex"){
     trueValue(value);
     createText("<a href='https://www.spacex.com/' target='_blank'><i class='fa fa-rocket white'></i> SpaceX:</a>")
-    createText("<p>I’m excited to be joining the Application Software team at SpaceX as a Software Engineering Intern this summer!</p>")
-    createText("As part of this internship, I'll have an opportunity to create mission critical applications that are used throughout SpaceX to accelerate launch vehicle production and flight!")
+    createText("<p>This last summer, I had the opportunity to work as a Software Engineering Intern at SpaceX!</p>")
+    createText("<p>I was a part of the Falson/Dragon manufacturing team in the Application Software (ASW) Department, \
+      building full-stack software using TypeScript, C#, and PostgreSQL that thousands of technicians and engineers used everyday \
+      to construct and refurbish rockets and their subcomponents.</p>")
   }
   else if(value === "mitll"){
     trueValue(value);
@@ -242,6 +256,10 @@ async function getInputValue(){
   else if(value === "saniya"){
     trueValue(value);
     createText("I love my beautiful girlfriend <3")
+  }
+  else if(value === "jansons"){
+    trueValue(value);
+    createText("hey there cutie ;)");
   }
   
   else if (value === "credits"){
